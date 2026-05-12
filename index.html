@@ -3,261 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parker Hawks Softball Lineup</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Parker Hawks All-Star Lineup</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #1a2e52;
-    --navy-dark: #0f1e38;
-    --gold: #f5a800;
-    --gold-light: #ffc533;
-    --gold-muted: #fff3cc;
-    --white: #ffffff;
-    --gray-bg: #f4f6fa;
-    --gray-line: #e2e8f0;
-    --text: #1a2e52;
-    --text-muted: #6b7a99;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--navy-dark);
+    background: #e8e0d0;
+    font-family: 'Courier Prime', monospace;
+    padding: 8px;
     min-height: 100vh;
-    padding: 12px;
   }
 
   .card {
-    background: var(--white);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-    max-width: 600px;
+    background: #faf6ee;
+    width: 100%;
+    max-width: 680px;
     margin: 0 auto;
+    border: 2px solid #1a1a1a;
+    box-shadow: 3px 3px 0 #1a1a1a;
   }
 
   /* HEADER */
   .header {
-    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
-    padding: 16px 16px 0;
-  }
-
-  .header::after {
-    content: '';
-    display: block;
-    height: 4px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-    margin-top: 14px;
+    border-bottom: 3px double #1a1a1a;
+    padding: 12px 10px 10px;
+    text-align: center;
   }
 
   .header-top {
     display: flex;
     align-items: center;
-    gap: 12px;
-  }
-
-  .logo-circle {
-    width: 52px;
-    height: 52px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 26px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 10px rgba(245,168,0,0.4);
+    gap: 6px;
+    margin-bottom: 3px;
+    flex-wrap: wrap;
   }
 
-  .header-text h1 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--white);
+  .stars { font-size: 0.7rem; letter-spacing: 4px; }
+
+  .team-name {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(1.1rem, 6vw, 1.9rem);
     letter-spacing: 2px;
     text-transform: uppercase;
-    line-height: 1.1;
+    line-height: 1;
   }
 
-  .header-text p {
-    font-size: 0.72rem;
-    color: var(--gold);
-    letter-spacing: 1.5px;
+  .subtitle {
+    font-size: clamp(0.52rem, 2.2vw, 0.68rem);
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-top: 3px;
-    font-weight: 600;
+    color: #444;
+    margin-top: 4px;
   }
 
-  .inning-pills {
-    display: flex;
-    gap: 5px;
-    margin-top: 12px;
-    padding-bottom: 2px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .inning-pills::-webkit-scrollbar { display: none; }
-
-  .pill {
-    background: rgba(245,168,0,0.15);
-    border: 1px solid rgba(245,168,0,0.35);
-    color: var(--gold-light);
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    white-space: nowrap;
-    text-transform: uppercase;
+  .divider-line {
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 7px 0 0;
   }
 
-  /* COLUMN HEADERS */
-  .col-headers {
-    display: grid;
-    grid-template-columns: 100px repeat(5, 1fr);
-    background: var(--navy);
-    padding: 8px 10px;
-    gap: 4px;
+  /* TABLE */
+  .lineup-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
   }
 
-  .col-h {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-align: center;
-  }
-  .col-h:first-child { text-align: left; color: rgba(255,255,255,0.45); }
-
-  /* PLAYER ROWS */
-  .players {
-    padding: 6px 8px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .player-row {
-    display: grid;
-    grid-template-columns: 100px repeat(5, 1fr);
-    align-items: center;
-    gap: 4px;
-    background: var(--gray-bg);
-    border-radius: 8px;
-    padding: 7px 8px;
-    border: 1px solid var(--gray-line);
-  }
-
-  .player-row:nth-child(even) {
-    background: #eef1f8;
-    border-color: #d8deee;
-  }
-
-  .player-name {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--navy);
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .pos-cell {
-    display: flex;
-    justify-content: center;
-  }
-
-  .pos {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3px 4px;
-    border-radius: 6px;
-    min-width: 40px;
-    text-align: center;
-    line-height: 1.1;
-  }
-
-  .pos-abbr {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.68rem;
+  .lineup-table th {
+    font-size: clamp(0.48rem, 1.8vw, 0.63rem);
     font-weight: 700;
-    letter-spacing: 0.3px;
-  }
-
-  .pos-num {
-    font-size: 0.52rem;
-    font-weight: 600;
-    opacity: 0.6;
-    margin-top: 1px;
-  }
-
-  .pos-sit   { background: #fff3cd; color: #7d5a00; border: 1px solid #f0c040; }
-  .pos-p     { background: #ffe0e0; color: #b91c1c; border: 1px solid #f87171; }
-  .pos-c     { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-  .pos-1b,
-  .pos-2b,
-  .pos-3b    { background: #dcfce7; color: #166534; border: 1px solid #6ee7b7; }
-  .pos-ss    { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
-  .pos-of    { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
-
-  /* LEGEND */
-  .legend {
-    background: var(--navy-dark);
-    padding: 10px 14px 14px;
-  }
-
-  .legend-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 1.5px;
-    color: var(--gold);
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 7px;
+    padding: 6px 2px;
+    text-align: center;
+    border-bottom: 2px solid #1a1a1a;
+    border-right: 1px solid #555;
+    background: #1a1a1a;
+    color: #faf6ee;
+    line-height: 1.2;
   }
 
-  .legend-grid {
+  .lineup-table th:first-child {
+    text-align: left;
+    width: 24%;
+    padding-left: 6px;
+    border-right: 2px solid #555;
+  }
+
+  .lineup-table th:last-child { border-right: none; }
+
+  .lineup-table td {
+    padding: 6px 2px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    font-size: clamp(0.58rem, 2vw, 0.76rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+
+  .lineup-table td:first-child {
+    text-align: left;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(0.62rem, 2.3vw, 0.82rem);
+    border-right: 2px solid #1a1a1a;
+    padding-left: 6px;
+  }
+
+  .lineup-table td:last-child { border-right: none; }
+  .lineup-table tr:last-child td { border-bottom: none; }
+  .lineup-table tr:nth-child(even) td { background: #f2ede3; }
+
+  .sit {
+    color: #bbb;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(0.5rem, 1.6vw, 0.64rem);
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 3px double #1a1a1a;
+    padding: 8px 10px 10px;
+  }
+
+  .key-title {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .key-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 4px 16px;
+    gap: 3px 16px;
   }
 
-  .legend-item {
-    font-size: 0.68rem;
-    color: rgba(255,255,255,0.55);
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  .key-item {
+    font-size: clamp(0.56rem, 1.8vw, 0.63rem);
+    color: #333;
   }
 
-  .legend-badge {
-    font-family: 'Oswald', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: var(--gold-light);
-    min-width: 44px;
-  }
+  .key-item b { font-weight: 700; }
 
-  @media (max-width: 380px) {
-    .col-headers { grid-template-columns: 82px repeat(5, 1fr); }
-    .player-row  { grid-template-columns: 82px repeat(5, 1fr); }
-    .player-name { font-size: 0.74rem; }
-    .pos { min-width: 34px; }
-    .pos-abbr { font-size: 0.6rem; }
-    .pos-num  { font-size: 0.48rem; }
+  @media (min-width: 480px) {
+    body { padding: 16px; }
+    .header { padding: 16px 20px 12px; }
+    .lineup-table th { padding: 8px 6px; letter-spacing: 1.5px; }
+    .lineup-table td { padding: 7px 6px; }
+    .lineup-table td:first-child { padding-left: 10px; }
+    .lineup-table th:first-child { padding-left: 10px; }
+    .key-grid { grid-template-columns: repeat(5, 1fr); }
+    .footer { padding: 10px 20px 14px; }
   }
 
   @media print {
     body { background: white; padding: 0; }
-    .card { box-shadow: none; max-width: 100%; border-radius: 0; }
+    .card { box-shadow: none; max-width: 100%; }
   }
 </style>
 </head>
@@ -266,155 +173,94 @@
 
   <div class="header">
     <div class="header-top">
-      <div class="logo-circle">🥎</div>
-      <div class="header-text">
-        <h1>Parker Hawks</h1>
-        <p>Softball · Game Day Lineup</p>
-      </div>
+      <span class="stars">★ ★ ★</span>
+      <span class="team-name">Parker Hawks</span>
+      <span class="stars">★ ★ ★</span>
     </div>
-    <div class="inning-pills">
-      <span class="pill">1st Inning</span>
-      <span class="pill">2nd Inning</span>
-      <span class="pill">3rd Inning</span>
-      <span class="pill">4th Inning</span>
-      <span class="pill">5th Inning</span>
-    </div>
+    <div class="subtitle">All-Star Softball &nbsp;·&nbsp; Official Game Lineup</div>
+    <hr class="divider-line">
   </div>
 
-  <div class="col-headers">
-    <div class="col-h">Player</div>
-    <div class="col-h">1st</div>
-    <div class="col-h">2nd</div>
-    <div class="col-h">3rd</div>
-    <div class="col-h">4th</div>
-    <div class="col-h">5th</div>
-  </div>
+  <table class="lineup-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Inn. 1</th>
+        <th>Inn. 2</th>
+        <th>Inn. 3</th>
+        <th>Inn. 4</th>
+        <th>Inn. 5</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Charlie G.</td>
+        <td>P (1)</td><td>P (1)</td><td>P (1)</td><td>P (1)</td><td>P (1)</td>
+      </tr>
+      <tr>
+        <td>Peyton</td>
+        <td>1st (3)</td><td>1st (3)</td><td>1st (3)</td><td>1st (3)</td><td>1st (3)</td>
+      </tr>
+      <tr>
+        <td>Madelyn</td>
+        <td>C (2)</td><td>SS (6)</td><td><span class="sit">sit</span></td><td>C (2)</td><td>C (2)</td>
+      </tr>
+      <tr>
+        <td>Emma Kate</td>
+        <td>LF (7)</td><td>2nd (4)</td><td>2nd (4)</td><td><span class="sit">sit</span></td><td>CFL (8)</td>
+      </tr>
+      <tr>
+        <td>Sela</td>
+        <td>SS (6)</td><td><span class="sit">sit</span></td><td>LF (7)</td><td>LF (7)</td><td>SS (6)</td>
+      </tr>
+      <tr>
+        <td>JoJo</td>
+        <td>3rd (5)</td><td>3rd (5)</td><td>C (2)</td><td>SS (6)</td><td><span class="sit">sit</span></td>
+      </tr>
+      <tr>
+        <td>Ellie</td>
+        <td>RF (9)</td><td>C (2)</td><td>RF (9)</td><td><span class="sit">sit</span></td><td>RF (9)</td>
+      </tr>
+      <tr>
+        <td>Diana</td>
+        <td><span class="sit">sit</span></td><td>LF (7)</td><td>3rd (5)</td><td>2nd (4)</td><td><span class="sit">sit</span></td>
+      </tr>
+      <tr>
+        <td>Charlie R.</td>
+        <td>CFR (10)</td><td>CFR (10)</td><td><span class="sit">sit</span></td><td>RF (9)</td><td>CFR (10)</td>
+      </tr>
+      <tr>
+        <td>Theodora</td>
+        <td>CFL (8)</td><td>CFL (8)</td><td>CFL (8)</td><td>3rd (5)</td><td><span class="sit">sit</span></td>
+      </tr>
+      <tr>
+        <td>Baylor</td>
+        <td>2nd (4)</td><td><span class="sit">sit</span></td><td>SS (6)</td><td>CFL (8)</td><td>LF (7)</td>
+      </tr>
+      <tr>
+        <td>Blakley</td>
+        <td><span class="sit">sit</span></td><td>RF (9)</td><td>CFR (10)</td><td><span class="sit">sit</span></td><td>CFL (8)</td>
+      </tr>
+      <tr>
+        <td>Max</td>
+        <td><span class="sit">sit</span></td><td>LF (7)</td><td><span class="sit">sit</span></td><td>CFR (10)</td><td>RF (9)</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="players">
-
-    <div class="player-row">
-      <div class="player-name">Diana</div>
-      <div class="pos-cell"><span class="pos pos-ss"><span class="pos-abbr">SS</span><span class="pos-num">#6</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">RF</span><span class="pos-num">#9</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CF</span><span class="pos-num">#8</span></span></div>
-      <div class="pos-cell"><span class="pos pos-2b"><span class="pos-abbr">2nd</span><span class="pos-num">#4</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Madelyn</div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-c"><span class="pos-abbr">C</span><span class="pos-num">#2</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">LF</span><span class="pos-num">#7</span></span></div>
-      <div class="pos-cell"><span class="pos pos-ss"><span class="pos-abbr">SS</span><span class="pos-num">#6</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">RF</span><span class="pos-num">#9</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Selah</div>
-      <div class="pos-cell"><span class="pos pos-3b"><span class="pos-abbr">3rd</span><span class="pos-num">#5</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">RF</span><span class="pos-num">#9</span></span></div>
-      <div class="pos-cell"><span class="pos pos-p"><span class="pos-abbr">P</span><span class="pos-num">#1</span></span></div>
-      <div class="pos-cell"><span class="pos pos-c"><span class="pos-abbr">C</span><span class="pos-num">#2</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Peyton</div>
-      <div class="pos-cell"><span class="pos pos-1b"><span class="pos-abbr">1st</span><span class="pos-num">#3</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">LF</span><span class="pos-num">#7</span></span></div>
-      <div class="pos-cell"><span class="pos pos-ss"><span class="pos-abbr">SS</span><span class="pos-num">#6</span></span></div>
-      <div class="pos-cell"><span class="pos pos-3b"><span class="pos-abbr">3rd</span><span class="pos-num">#5</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFR</span><span class="pos-num">#10</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Ellie</div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">LF</span><span class="pos-num">#7</span></span></div>
-      <div class="pos-cell"><span class="pos pos-3b"><span class="pos-abbr">3rd</span><span class="pos-num">#5</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-1b"><span class="pos-abbr">1st</span><span class="pos-num">#3</span></span></div>
-      <div class="pos-cell"><span class="pos pos-2b"><span class="pos-abbr">2nd</span><span class="pos-num">#4</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">JoJo</div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFL</span><span class="pos-num">#8</span></span></div>
-      <div class="pos-cell"><span class="pos pos-ss"><span class="pos-abbr">SS</span><span class="pos-num">#6</span></span></div>
-      <div class="pos-cell"><span class="pos pos-1b"><span class="pos-abbr">1st</span><span class="pos-num">#3</span></span></div>
-      <div class="pos-cell"><span class="pos pos-c"><span class="pos-abbr">C</span><span class="pos-num">#2</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Charlie R.</div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFR</span><span class="pos-num">#10</span></span></div>
-      <div class="pos-cell"><span class="pos pos-2b"><span class="pos-abbr">2nd</span><span class="pos-num">#4</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFL</span><span class="pos-num">#8</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">LF</span><span class="pos-num">#7</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Emma Kate</div>
-      <div class="pos-cell"><span class="pos pos-2b"><span class="pos-abbr">2nd</span><span class="pos-num">#4</span></span></div>
-      <div class="pos-cell"><span class="pos pos-p"><span class="pos-abbr">P</span><span class="pos-num">#1</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFL</span><span class="pos-num">#8</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">LF</span><span class="pos-num">#7</span></span></div>
-      <div class="pos-cell"><span class="pos pos-ss"><span class="pos-abbr">SS</span><span class="pos-num">#6</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Charlie G.</div>
-      <div class="pos-cell"><span class="pos pos-p"><span class="pos-abbr">P</span><span class="pos-num">#1</span></span></div>
-      <div class="pos-cell"><span class="pos pos-1b"><span class="pos-abbr">1st</span><span class="pos-num">#3</span></span></div>
-      <div class="pos-cell"><span class="pos pos-c"><span class="pos-abbr">C</span><span class="pos-num">#2</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-3b"><span class="pos-abbr">3rd</span><span class="pos-num">#5</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Max</div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">RF</span><span class="pos-num">#9</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-3b"><span class="pos-abbr">3rd</span><span class="pos-num">#5</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFR</span><span class="pos-num">#10</span></span></div>
-      <div class="pos-cell"><span class="pos pos-p"><span class="pos-abbr">P</span><span class="pos-num">#1</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Blakley</div>
-      <div class="pos-cell"><span class="pos pos-c"><span class="pos-abbr">C</span><span class="pos-num">#2</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFR</span><span class="pos-num">#10</span></span></div>
-      <div class="pos-cell"><span class="pos pos-p"><span class="pos-abbr">P</span><span class="pos-num">#1</span></span></div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFL</span><span class="pos-num">#8</span></span></div>
-    </div>
-
-    <div class="player-row">
-      <div class="player-name">Theodora</div>
-      <div class="pos-cell"><span class="pos pos-sit"><span class="pos-abbr">Sit</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">CFL</span><span class="pos-num">#8</span></span></div>
-      <div class="pos-cell"><span class="pos pos-2b"><span class="pos-abbr">2nd</span><span class="pos-num">#4</span></span></div>
-      <div class="pos-cell"><span class="pos pos-of"><span class="pos-abbr">RF</span><span class="pos-num">#9</span></span></div>
-      <div class="pos-cell"><span class="pos pos-1b"><span class="pos-abbr">1st</span><span class="pos-num">#3</span></span></div>
-    </div>
-
-  </div>
-
-  <div class="legend">
-    <div class="legend-title">Position Key</div>
-    <div class="legend-grid">
-      <div class="legend-item"><span class="legend-badge">P · 1</span> Pitcher</div>
-      <div class="legend-item"><span class="legend-badge">C · 2</span> Catcher</div>
-      <div class="legend-item"><span class="legend-badge">1st · 3</span> First Base</div>
-      <div class="legend-item"><span class="legend-badge">2nd · 4</span> Second Base</div>
-      <div class="legend-item"><span class="legend-badge">3rd · 5</span> Third Base</div>
-      <div class="legend-item"><span class="legend-badge">SS · 6</span> Shortstop</div>
-      <div class="legend-item"><span class="legend-badge">LF · 7</span> Left Field</div>
-      <div class="legend-item"><span class="legend-badge">CFL · 8</span> Center Field Left</div>
-      <div class="legend-item"><span class="legend-badge">RF · 9</span> Right Field</div>
-      <div class="legend-item"><span class="legend-badge">CFR · 10</span> Center Field Right</div>
+  <div class="footer">
+    <div class="key-title">Position Key</div>
+    <div class="key-grid">
+      <div class="key-item"><b>P · 1</b> Pitcher</div>
+      <div class="key-item"><b>C · 2</b> Catcher</div>
+      <div class="key-item"><b>1st · 3</b> First Base</div>
+      <div class="key-item"><b>2nd · 4</b> Second Base</div>
+      <div class="key-item"><b>3rd · 5</b> Third Base</div>
+      <div class="key-item"><b>SS · 6</b> Shortstop</div>
+      <div class="key-item"><b>LF · 7</b> Left Field</div>
+      <div class="key-item"><b>CFL · 8</b> CF Left</div>
+      <div class="key-item"><b>RF · 9</b> Right Field</div>
+      <div class="key-item"><b>CFR · 10</b> CF Right</div>
     </div>
   </div>
 
